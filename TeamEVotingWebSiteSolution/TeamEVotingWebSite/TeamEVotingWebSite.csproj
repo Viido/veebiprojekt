@@ -151,6 +151,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pictures\Avaleht.png" />
+    <Content Include="Pictures\Kandidaadid.png" />
+    <Content Include="Pictures\Kandideeri.png" />
+    <Content Include="Pictures\Kandideeritud.png" />
+    <Content Include="Pictures\KKK.png" />
+    <Content Include="Pictures\LeitudKandidaadid.png" />
+    <Content Include="Pictures\LogimineValik.png" />
+    <Content Include="Pictures\Logitud.png" />
+    <Content Include="Pictures\OtsiKandidaati.png" />
+    <Content Include="Pictures\Statistika.png" />
+    <Content Include="Pictures\Tulemused.png" />
+    <Content Include="Pictures\Valimine.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
