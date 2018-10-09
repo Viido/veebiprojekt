@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeamEVotingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CandidateSet">
+          <Key>
+            <PropertyRef Name="Candidate_Id" />
+          </Key>
+          <Property Name="Candidate_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Candidate_FirstName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Candidate_Age" Type="int" Nullable="false" />
+          <Property Name="Region_Id" Type="int" Nullable="false" />
+          <Property Name="Faction_Id" Type="int" Nullable="false" />
+          <Property Name="NumberOfVotes" Type="int" />
+          <Property Name="Candidate_LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FactionRegionSet">
+          <Key>
+            <PropertyRef Name="Region_Id" />
+            <PropertyRef Name="Faction_Id" />
+          </Key>
+          <Property Name="Region_Id" Type="int" Nullable="false" />
+          <Property Name="Faction_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FactionSet">
+          <Key>
+            <PropertyRef Name="Faction_Id" />
+          </Key>
+          <Property Name="Faction_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Faction_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NumberOfMembers" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegionSet">
+          <Key>
+            <PropertyRef Name="Region_Id" />
+          </Key>
+          <Property Name="Region_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Region_Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSet">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="User_LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Candidate_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CandidateRegion">
+          <End Role="RegionSet" Type="Self.RegionSet" Multiplicity="1" />
+          <End Role="CandidateSet" Type="Self.CandidateSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegionSet">
+              <PropertyRef Name="Region_Id" />
+            </Principal>
+            <Dependent Role="CandidateSet">
+              <PropertyRef Name="Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateUser">
+          <End Role="CandidateSet" Type="Self.CandidateSet" Multiplicity="1" />
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateSet">
+              <PropertyRef Name="Candidate_Id" />
+            </Principal>
+            <Dependent Role="UserSet">
+              <PropertyRef Name="Candidate_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FactionCandidate">
+          <End Role="FactionSet" Type="Self.FactionSet" Multiplicity="1" />
+          <End Role="CandidateSet" Type="Self.CandidateSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FactionSet">
+              <PropertyRef Name="Faction_Id" />
+            </Principal>
+            <Dependent Role="CandidateSet">
+              <PropertyRef Name="Faction_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FactionFactionRegion">
+          <End Role="FactionSet" Type="Self.FactionSet" Multiplicity="1" />
+          <End Role="FactionRegionSet" Type="Self.FactionRegionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FactionSet">
+              <PropertyRef Name="Faction_Id" />
+            </Principal>
+            <Dependent Role="FactionRegionSet">
+              <PropertyRef Name="Faction_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegionFactionRegion">
+          <End Role="RegionSet" Type="Self.RegionSet" Multiplicity="1" />
+          <End Role="FactionRegionSet" Type="Self.FactionRegionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegionSet">
+              <PropertyRef Name="Region_Id" />
+            </Principal>
+            <Dependent Role="FactionRegionSet">
+              <PropertyRef Name="Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamEVotingDBModelStoreContainer">
+          <EntitySet Name="CandidateSet" EntityType="Self.CandidateSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FactionRegionSet" EntityType="Self.FactionRegionSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FactionSet" EntityType="Self.FactionSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegionSet" EntityType="Self.RegionSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSet" EntityType="Self.UserSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CandidateRegion" Association="Self.FK_CandidateRegion">
+            <End Role="RegionSet" EntitySet="RegionSet" />
+            <End Role="CandidateSet" EntitySet="CandidateSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateUser" Association="Self.FK_CandidateUser">
+            <End Role="CandidateSet" EntitySet="CandidateSet" />
+            <End Role="UserSet" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FactionCandidate" Association="Self.FK_FactionCandidate">
+            <End Role="FactionSet" EntitySet="FactionSet" />
+            <End Role="CandidateSet" EntitySet="CandidateSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FactionFactionRegion" Association="Self.FK_FactionFactionRegion">
+            <End Role="FactionSet" EntitySet="FactionSet" />
+            <End Role="FactionRegionSet" EntitySet="FactionRegionSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegionFactionRegion" Association="Self.FK_RegionFactionRegion">
+            <End Role="RegionSet" EntitySet="RegionSet" />
+            <End Role="FactionRegionSet" EntitySet="FactionRegionSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeamEVotingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CandidateSet">
+          <Key>
+            <PropertyRef Name="Candidate_Id" />
+          </Key>
+          <Property Name="Candidate_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Candidate_FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Candidate_Age" Type="Int32" Nullable="false" />
+          <Property Name="Region_Id" Type="Int32" Nullable="false" />
+          <Property Name="Faction_Id" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfVotes" Type="Int32" />
+          <Property Name="Candidate_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RegionSet" Relationship="Self.FK_CandidateRegion" FromRole="CandidateSet" ToRole="RegionSet" />
+          <NavigationProperty Name="UserSet" Relationship="Self.FK_CandidateUser" FromRole="CandidateSet" ToRole="UserSet" />
+          <NavigationProperty Name="FactionSet" Relationship="Self.FK_FactionCandidate" FromRole="CandidateSet" ToRole="FactionSet" />
+        </EntityType>
+        <EntityType Name="FactionSet">
+          <Key>
+            <PropertyRef Name="Faction_Id" />
+          </Key>
+          <Property Name="Faction_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Faction_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberOfMembers" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CandidateSet" Relationship="Self.FK_FactionCandidate" FromRole="FactionSet" ToRole="CandidateSet" />
+          <NavigationProperty Name="RegionSet" Relationship="Self.FactionRegionSet" FromRole="FactionSet" ToRole="RegionSet" />
+        </EntityType>
+        <EntityType Name="RegionSet">
+          <Key>
+            <PropertyRef Name="Region_Id" />
+          </Key>
+          <Property Name="Region_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Region_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CandidateSet" Relationship="Self.FK_CandidateRegion" FromRole="RegionSet" ToRole="CandidateSet" />
+          <NavigationProperty Name="FactionSet" Relationship="Self.FactionRegionSet" FromRole="RegionSet" ToRole="FactionSet" />
+        </EntityType>
+        <EntityType Name="UserSet">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User_LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Candidate_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CandidateSet" Relationship="Self.FK_CandidateUser" FromRole="UserSet" ToRole="CandidateSet" />
+        </EntityType>
+        <Association Name="FK_CandidateRegion">
+          <End Role="RegionSet" Type="Self.RegionSet" Multiplicity="1" />
+          <End Role="CandidateSet" Type="Self.CandidateSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegionSet">
+              <PropertyRef Name="Region_Id" />
+            </Principal>
+            <Dependent Role="CandidateSet">
+              <PropertyRef Name="Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateUser">
+          <End Role="CandidateSet" Type="Self.CandidateSet" Multiplicity="1" />
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateSet">
+              <PropertyRef Name="Candidate_Id" />
+            </Principal>
+            <Dependent Role="UserSet">
+              <PropertyRef Name="Candidate_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FactionCandidate">
+          <End Role="FactionSet" Type="Self.FactionSet" Multiplicity="1" />
+          <End Role="CandidateSet" Type="Self.CandidateSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FactionSet">
+              <PropertyRef Name="Faction_Id" />
+            </Principal>
+            <Dependent Role="CandidateSet">
+              <PropertyRef Name="Faction_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FactionRegionSet">
+          <End Role="FactionSet" Type="Self.FactionSet" Multiplicity="*" />
+          <End Role="RegionSet" Type="Self.RegionSet" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TeamEVotingDBEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CandidateSet" EntityType="Self.CandidateSet" />
+          <EntitySet Name="FactionSet" EntityType="Self.FactionSet" />
+          <EntitySet Name="RegionSet" EntityType="Self.RegionSet" />
+          <EntitySet Name="UserSet" EntityType="Self.UserSet" />
+          <AssociationSet Name="FK_CandidateRegion" Association="Self.FK_CandidateRegion">
+            <End Role="RegionSet" EntitySet="RegionSet" />
+            <End Role="CandidateSet" EntitySet="CandidateSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateUser" Association="Self.FK_CandidateUser">
+            <End Role="CandidateSet" EntitySet="CandidateSet" />
+            <End Role="UserSet" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FactionCandidate" Association="Self.FK_FactionCandidate">
+            <End Role="FactionSet" EntitySet="FactionSet" />
+            <End Role="CandidateSet" EntitySet="CandidateSet" />
+          </AssociationSet>
+          <AssociationSet Name="FactionRegionSet" Association="Self.FactionRegionSet">
+            <End Role="FactionSet" EntitySet="FactionSet" />
+            <End Role="RegionSet" EntitySet="RegionSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeamEVotingDBModelStoreContainer" CdmEntityContainer="TeamEVotingDBEntities3">
+          <EntitySetMapping Name="CandidateSet">
+            <EntityTypeMapping TypeName="TeamEVotingDBModel.CandidateSet">
+              <MappingFragment StoreEntitySet="CandidateSet">
+                <ScalarProperty Name="Candidate_Id" ColumnName="Candidate_Id" />
+                <ScalarProperty Name="Candidate_FirstName" ColumnName="Candidate_FirstName" />
+                <ScalarProperty Name="Candidate_Age" ColumnName="Candidate_Age" />
+                <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+                <ScalarProperty Name="Faction_Id" ColumnName="Faction_Id" />
+                <ScalarProperty Name="NumberOfVotes" ColumnName="NumberOfVotes" />
+                <ScalarProperty Name="Candidate_LastName" ColumnName="Candidate_LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactionSet">
+            <EntityTypeMapping TypeName="TeamEVotingDBModel.FactionSet">
+              <MappingFragment StoreEntitySet="FactionSet">
+                <ScalarProperty Name="Faction_Id" ColumnName="Faction_Id" />
+                <ScalarProperty Name="Faction_Name" ColumnName="Faction_Name" />
+                <ScalarProperty Name="NumberOfMembers" ColumnName="NumberOfMembers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegionSet">
+            <EntityTypeMapping TypeName="TeamEVotingDBModel.RegionSet">
+              <MappingFragment StoreEntitySet="RegionSet">
+                <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+                <ScalarProperty Name="Region_Name" ColumnName="Region_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSet">
+            <EntityTypeMapping TypeName="TeamEVotingDBModel.UserSet">
+              <MappingFragment StoreEntitySet="UserSet">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+                <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+                <ScalarProperty Name="Candidate_Id" ColumnName="Candidate_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FactionRegionSet" TypeName="TeamEVotingDBModel.FactionRegionSet" StoreEntitySet="FactionRegionSet">
+            <EndProperty Name="FactionSet">
+              <ScalarProperty Name="Faction_Id" ColumnName="Faction_Id" />
+            </EndProperty>
+            <EndProperty Name="RegionSet">
+              <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

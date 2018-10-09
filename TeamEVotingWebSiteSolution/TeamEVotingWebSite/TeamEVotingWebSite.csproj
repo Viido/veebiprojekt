@@ -42,10 +42,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -148,9 +156,46 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CandidateSet.cs">
+      <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactionSet.cs">
+      <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RegionSet.cs">
+      <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeamEVotingDatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeamEVotingDatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeamEVotingDatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeamEVotingDatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSet.cs">
+      <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\TeamEVotingDatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>TeamEVotingDatabaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TeamEVotingDatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>TeamEVotingDatabaseModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Pictures\Avaleht.png" />
     <Content Include="Pictures\Kandidaadid.png" />
     <Content Include="Pictures\Kandideeri.png" />
@@ -174,6 +219,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config" />
+    <EntityDeploy Include="Models\TeamEVotingDatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TeamEVotingDatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TeamEVotingDatabaseModel.edmx.diagram">
+      <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\TeamEVotingWebSite - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -204,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -218,6 +269,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
