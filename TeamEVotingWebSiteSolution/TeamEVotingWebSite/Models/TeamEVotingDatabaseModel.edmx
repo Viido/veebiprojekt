@@ -225,7 +225,7 @@
           <End Role="FactionSet" Type="Self.FactionSet" Multiplicity="*" />
           <End Role="RegionSet" Type="Self.RegionSet" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="TeamEVotingDBEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TeamEVotingDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CandidateSet" EntityType="Self.CandidateSet" />
           <EntitySet Name="FactionSet" EntityType="Self.FactionSet" />
           <EntitySet Name="RegionSet" EntityType="Self.RegionSet" />
@@ -252,7 +252,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TeamEVotingDBModelStoreContainer" CdmEntityContainer="TeamEVotingDBEntities3">
+        <EntityContainerMapping StorageEntityContainer="TeamEVotingDBModelStoreContainer" CdmEntityContainer="TeamEVotingDBEntities">
           <EntitySetMapping Name="CandidateSet">
             <EntityTypeMapping TypeName="TeamEVotingDBModel.CandidateSet">
               <MappingFragment StoreEntitySet="CandidateSet">

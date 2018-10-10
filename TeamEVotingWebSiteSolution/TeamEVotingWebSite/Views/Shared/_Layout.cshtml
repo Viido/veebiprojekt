@@ -16,19 +16,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Electronic Voting application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li>@Html.ActionLink("Welcome Page", "WelcomePage", "Home")</li>
+                <div class="navbar-collapse collapse">
 
-                </ul>
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Welcome Page", "WelcomePage", "Home")</li>
+
+                        <li>@Html.ActionLink("Factions", "Index", "Factions")</li>
+
+                        <li>@Html.ActionLink("Regions", "Index", "Regions")</li>
+
+                        <li>@Html.ActionLink("Candidates", "Index", "Candidates")</li>
+                    </ul>
+                </div>
             </div>
-        </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />

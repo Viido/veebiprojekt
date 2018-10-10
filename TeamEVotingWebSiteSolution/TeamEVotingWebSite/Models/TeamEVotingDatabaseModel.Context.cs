@@ -13,10 +13,10 @@ namespace TeamEVotingWebSite.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TeamEVotingDBEntities3 : DbContext
+    public partial class TeamEVotingDBEntities : DbContext
     {
-        public TeamEVotingDBEntities3()
-            : base("name=TeamEVotingDBEntities3")
+        public TeamEVotingDBEntities()
+            : base("name=TeamEVotingDBEntities")
         {
         }
     
