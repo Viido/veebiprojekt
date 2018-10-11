@@ -22,31 +22,8 @@ namespace TeamEVotingWebSite.Controllers
         }
         public ActionResult IndexJoin()
         {
-            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
-            {
-                //regionsList = teamEVotingDBEntities.RegionSet.ToList();
-                //var innerJoinQuery = from region in teamEVotingDBEntities.RegionSet
-                //                     join rq in teamEVotingDBEntities.CandidateSet on region.Region_Id equals rq.Region_Id
-                //                     select new CandidateSet
-                //                     {
-                //                         //Region_Id = region.Region_Id,
-
-                //                     }
-                //**?????
-                //var result = from user in teamEVotingDBEntities.UserSet
-                //             join uc in teamEVotingDBEntities.CandidateSet on user.Candidate_Id equals uc.Candidate_Id
-                //             select new
-                //             {
-                //                 user.User_FirstName,
-                //                 user.User_LastName,
-                //                 uc.Candidate_FirstName,
-                //                 uc.Candidate_LastName
-                //             };
-                //var result = 
-
 
                 return View();
-            }
         }
 
         // GET: RawSql/Details/5

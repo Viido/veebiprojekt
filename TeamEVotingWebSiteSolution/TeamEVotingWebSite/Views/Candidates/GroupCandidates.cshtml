@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TeamEVotingWebSite.Models.CandidateSet>
+
+@{
+    ViewBag.Title = "Statistics of Candidates";
+}
+
+<h2>Statistics of Candidates</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Number of Candidates
+        </th>
+        <th>
+            Number of Factions
+        </th>
+        <th>
+            Number of Regions
+        </th>
+        <th>
+            Sum of candidates ages
+        </th>
+        <th>
+            Youngest candidate age
+        </th>
+        <th>
+            Oldest candidate age
+        </th>
+        <th>
+            Average candidate age
+        </th>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @ViewBag.candidatesCount
+        </td>
+        <td>
+            @ViewBag.factionsCount
+        </td>
+        <td>
+            @ViewBag.regionsCount
+        </td>
+        <td>
+            @ViewBag.sumCandidates
+        </td>
+        <td>
+            @ViewBag.youngestCandidate
+        </td>
+        <td>
+            @ViewBag.oldestCandidate
+        </td>
+        <td>
+            @ViewBag.averageCandidateAge
+        </td>
+        
+    </tr>
+
+
+</table>

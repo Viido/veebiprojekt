@@ -70,6 +70,7 @@ namespace TeamEVotingWebSite.Controllers
                 using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
                 {
                     teamEVotingDB.CandidateSet.Add(candidates);
+                    candidates.NumberOfVotes = 0;
                     teamEVotingDB.SaveChanges();
                 }
 
@@ -113,6 +114,37 @@ namespace TeamEVotingWebSite.Controllers
 
             return View(teamEVotingDBEntities.CandidateSet.Where(x => x.Candidate_Id == id).FirstOrDefault());
             }
+        }
+        public ActionResult GroupCandidates()
+        {
+            CandidateSet candidate = new CandidateSet();
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            {
+                var candidatesCount = teamEVotingDBEntities.CandidateSet.Count();
+                var factionsCount = teamEVotingDBEntities.FactionSet.Count();
+                var regionsCount = teamEVotingDBEntities.RegionSet.Count();
+
+                var sumCandidates = teamEVotingDBEntities.CandidateSet.Sum(x => x.Candidate_Age);
+                var youngestCandidate = teamEVotingDBEntities.CandidateSet.Min(x => x.Candidate_Age);
+                var oldestCandidate = teamEVotingDBEntities.CandidateSet.Max(x => x.Candidate_Age);
+
+                var averageCandidateAge = teamEVotingDBEntities.CandidateSet.Average(x => x.Candidate_Age);
+
+                ViewBag.candidatesCount = candidatesCount;
+
+                ViewBag.factionsCount = factionsCount;
+                ViewBag.regionsCount = regionsCount;
+                ViewBag.sumCandidates = sumCandidates;
+                ViewBag.youngestCandidate = youngestCandidate;
+                ViewBag.oldestCandidate = oldestCandidate;
+                ViewBag.averageCandidateAge = averageCandidateAge;
+
+
+
+            }
+
+
+            return View();
         }
 
         // POST: Candidates/Delete/5

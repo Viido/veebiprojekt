@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>CandidateSet</h4>
         <hr />
@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Region_Id, "Region_Id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Region_Id", new SelectList(Model.regions, "Region_Id", "Region_Name"), "Select region")
+                @Html.DropDownList("Region_Id", new SelectList(Model.regions, "Region_Id", "Region_Name"), "Select region", new { required = "required"})
                 @Html.ValidationMessageFor(model => model.Region_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Faction_Id, "Faction_Id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Faction_Id", new SelectList(Model.factions, "Faction_Id", "Faction_Name"), "Select faction")
+                @Html.DropDownList("Faction_Id", new SelectList(Model.factions, "Faction_Id", "Faction_Name"), "Select faction", new { required = "required"})
                 @Html.ValidationMessageFor(model => model.Faction_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,7 +57,7 @@
         @*<div class="form-group">
             @Html.LabelFor(model => model.NumberOfVotes, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfVotes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.NumberOfVotes, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
                 @Html.ValidationMessageFor(model => model.NumberOfVotes, "", new { @class = "text-danger" })
             </div>
         </div>*@
