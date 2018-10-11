@@ -11,12 +11,17 @@ namespace TeamEVotingWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserSet
     {
+        [Required]
         public int User_Id { get; set; }
+        [Required]
         public string User_FirstName { get; set; }
+        [Required]
         public string User_LastName { get; set; }
+        [Required]
         public int Candidate_Id { get; set; }
     
         public virtual CandidateSet CandidateSet { get; set; }

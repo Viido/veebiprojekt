@@ -11,7 +11,8 @@ namespace TeamEVotingWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class RegionSet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +21,9 @@ namespace TeamEVotingWebSite.Models
             this.CandidateSet = new HashSet<CandidateSet>();
             this.FactionSet = new HashSet<FactionSet>();
         }
-    
+        [Required]
         public int Region_Id { get; set; }
+        [Required]
         public string Region_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

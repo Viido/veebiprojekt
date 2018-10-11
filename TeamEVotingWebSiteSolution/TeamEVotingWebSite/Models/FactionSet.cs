@@ -11,7 +11,8 @@ namespace TeamEVotingWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class FactionSet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +21,10 @@ namespace TeamEVotingWebSite.Models
             this.CandidateSet = new HashSet<CandidateSet>();
             this.RegionSet = new HashSet<RegionSet>();
         }
-    
+
+        [Required]
         public int Faction_Id { get; set; }
+        [Required]
         public string Faction_Name { get; set; }
         public int NumberOfMembers { get; set; }
     

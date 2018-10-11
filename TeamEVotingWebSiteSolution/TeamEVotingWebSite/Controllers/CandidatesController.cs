@@ -15,14 +15,7 @@ namespace TeamEVotingWebSite.Controllers
         // GET: Candidates
         public ActionResult Index()
         {
-            //using(TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
-            //{
-
-            //    candidates = teamEVotingDBEntities.CandidateSet.ToList();
-
-
-            //}
-            //return View(candidates);
+           
             using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
 
@@ -115,7 +108,11 @@ namespace TeamEVotingWebSite.Controllers
         // GET: Candidates/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            {
+
+            return View(teamEVotingDBEntities.CandidateSet.Where(x => x.Candidate_Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Candidates/Delete/5
@@ -124,7 +121,12 @@ namespace TeamEVotingWebSite.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+                {
+                    CandidateSet candidateSet = teamEVotingDBEntities.CandidateSet.Where(x => x.Candidate_Id == id).FirstOrDefault();
+                    teamEVotingDBEntities.CandidateSet.Remove(candidateSet);
+                    teamEVotingDBEntities.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }

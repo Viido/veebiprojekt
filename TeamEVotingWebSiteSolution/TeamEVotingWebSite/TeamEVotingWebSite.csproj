@@ -299,6 +299,7 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\SeeVotedCandidates.cshtml" />
+    <Content Include="Views\Candidates\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

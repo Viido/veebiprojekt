@@ -11,7 +11,8 @@ namespace TeamEVotingWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CandidateSet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,12 +21,19 @@ namespace TeamEVotingWebSite.Models
             this.UserSet = new HashSet<UserSet>();
         }
     
+        [Required]
         public int Candidate_Id { get; set; }
+        [Required]
         public string Candidate_FirstName { get; set; }
+        [Required]
         public int Candidate_Age { get; set; }
+        [Required]
         public int Region_Id { get; set; }
+        [Required]
         public int Faction_Id { get; set; }
+        [Required]
         public Nullable<int> NumberOfVotes { get; set; }
+        [Required]
         public string Candidate_LastName { get; set; }
     
         public virtual RegionSet RegionSet { get; set; }
