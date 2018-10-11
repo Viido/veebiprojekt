@@ -20,7 +20,7 @@ namespace TeamEVotingWebSite.Models
         {
             this.UserSet = new HashSet<UserSet>();
         }
-    
+
         [Required]
         public int Candidate_Id { get; set; }
         [Required]
@@ -35,7 +35,14 @@ namespace TeamEVotingWebSite.Models
         public Nullable<int> NumberOfVotes { get; set; }
         [Required]
         public string Candidate_LastName { get; set; }
-    
+
+        public string Fullname
+        {
+            get
+            {
+                return string.Format("{0} {1}", Candidate_FirstName, Candidate_LastName);
+            }
+        }
         public virtual RegionSet RegionSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserSet> UserSet { get; set; }

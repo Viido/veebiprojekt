@@ -139,6 +139,12 @@ namespace TeamEVotingWebSite.Controllers
                 ViewBag.oldestCandidate = oldestCandidate;
                 ViewBag.averageCandidateAge = averageCandidateAge;
 
+                HttpRequest req = System.Web.HttpContext.Current.Request;
+                string browserName = req.Browser.Browser;
+                ViewBag.browser = browserName;
+
+                string userIpAddress = HttpContext.Request.UserHostAddress;
+                ViewBag.ip = userIpAddress;
 
 
             }

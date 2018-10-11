@@ -15,15 +15,27 @@ namespace TeamEVotingWebSite.Models
 
     public partial class UserSet
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserSet()
+        {
+            this.VisitorInfo = new HashSet<VisitorInfo>();
+        }
         [Required]
         public int User_Id { get; set; }
         [Required]
         public string User_FirstName { get; set; }
         [Required]
         public string User_LastName { get; set; }
-        [Required]
+
+       
+
         public int Candidate_Id { get; set; }
+        public string User_Email { get; set; }
     
         public virtual CandidateSet CandidateSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VisitorInfo> VisitorInfo { get; set; }
+        public List<CandidateSet> candidates { get; set; }
+
     }
 }

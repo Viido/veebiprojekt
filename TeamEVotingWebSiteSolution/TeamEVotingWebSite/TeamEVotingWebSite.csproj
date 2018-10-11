@@ -185,6 +185,9 @@
       <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserVotedCandidatesVM.cs" />
+    <Compile Include="Models\VisitorInfo.cs">
+      <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +201,7 @@
       <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
       <LastGenOutput>TeamEVotingDatabaseModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\TeamEVotingDatabaseModel.edmx.sql" />
     <Content Include="Models\TeamEVotingDatabaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
@@ -296,11 +300,11 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Factions\Index.cshtml" />
     <Content Include="Views\Factions\Create.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\SeeVotedCandidates.cshtml" />
     <Content Include="Views\Candidates\Delete.cshtml" />
     <Content Include="Views\Candidates\GroupCandidates.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

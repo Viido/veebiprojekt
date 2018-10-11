@@ -16,5 +16,6 @@ namespace TeamEVotingWebSite.Models
         public int Candidate_Age { get; set; }
         public string Candidate_LastName { get; set; }
 
+
     }
 }

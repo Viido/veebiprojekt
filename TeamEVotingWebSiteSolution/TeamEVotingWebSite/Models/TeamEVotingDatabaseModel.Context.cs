@@ -29,5 +29,6 @@ namespace TeamEVotingWebSite.Models
         public virtual DbSet<FactionSet> FactionSet { get; set; }
         public virtual DbSet<RegionSet> RegionSet { get; set; }
         public virtual DbSet<UserSet> UserSet { get; set; }
+        public virtual DbSet<VisitorInfo> VisitorInfo { get; set; }
     }
 }

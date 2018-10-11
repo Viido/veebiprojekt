@@ -25,7 +25,8 @@ namespace TeamEVotingWebSite.Controllers
 
         public ActionResult SeeVotedCandidates()
         {
-            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities()){
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            {
 
                 var result = (from u in teamEVotingDBEntities.UserSet
                               join c in teamEVotingDBEntities.CandidateSet on u.Candidate_Id equals c.Candidate_Id
@@ -53,10 +54,21 @@ namespace TeamEVotingWebSite.Controllers
             return View();
         }
 
+
         // GET: Users/Create
         public ActionResult Create()
         {
-            return View();
+            UserSet user = new UserSet();
+            CandidateSet candidateSet = new CandidateSet();
+            using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
+            {
+
+                user.candidates = teamEVotingDB.CandidateSet.ToList();
+                //var fullName = candidateSet.Candidate_FirstName + candidateSet.Candidate_LastName;
+                //user.candidates = 
+            }
+
+            return View(user);
         }
 
         // POST: Users/Create
@@ -68,12 +80,11 @@ namespace TeamEVotingWebSite.Controllers
                 // TODO: Add insert logic here
                 using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
                 {
-                    if (ModelState.IsValid)
-                    {
 
-                        teamEVotingDBEntities.UserSet.Add(user);
-                        teamEVotingDBEntities.SaveChanges();
-                    }
+
+                    teamEVotingDBEntities.UserSet.Add(user);
+                    teamEVotingDBEntities.SaveChanges();
+
                 }
                 return RedirectToAction("Index");
 
