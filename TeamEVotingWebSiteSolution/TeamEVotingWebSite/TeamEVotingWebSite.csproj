@@ -159,6 +159,7 @@
     <Compile Include="Models\CandidateSet.cs">
       <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateCandidateVM.cs" />
     <Compile Include="Models\FactionSet.cs">
       <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
     </Compile>
@@ -263,6 +264,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Views\Candidates\Create.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -282,7 +284,6 @@
     <Content Include="Views\Regions\Index.cshtml" />
     <Content Include="Views\RawSql\Create.cshtml" />
     <Content Include="Views\RawSql\Index.cshtml" />
-    <Content Include="Views\Candidates\Create.cshtml" />
     <Content Include="Views\Candidates\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />

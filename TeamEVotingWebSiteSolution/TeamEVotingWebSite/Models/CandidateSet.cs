@@ -32,5 +32,7 @@ namespace TeamEVotingWebSite.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserSet> UserSet { get; set; }
         public virtual FactionSet FactionSet { get; set; }
+        public List<RegionSet> regions { get; set; }
+        public List<FactionSet> factions { get; set; }
     }
 }

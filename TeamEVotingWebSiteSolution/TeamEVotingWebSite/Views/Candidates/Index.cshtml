@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TeamEVotingWebSite.Models.CandidateSet>
+﻿@model IEnumerable<TeamEVotingWebSite.Models.CreateCandidateVM>
 
 @{
     ViewBag.Title = "Index";
@@ -12,22 +12,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Candidate_FirstName)
+            Candidate ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Candidate_Age)
+            Candidate firstname
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumberOfVotes)
+            Candidate lastname
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Candidate_LastName)
+            Candidate age
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RegionSet.Region_Name)
+            Number of Votes
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FactionSet.Faction_Name)
+            Region ID
+        </th>
+        <th>
+            Region name
+        </th>
+        <th>
+            Faction ID
+        </th>
+        <th>
+            Faction name
         </th>
         <th></th>
     </tr>
@@ -35,27 +44,36 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Candidate_FirstName)
+            @item.Candidate_Id
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Candidate_Age)
+            @item.Candidate_FirstName
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumberOfVotes)
+            @item.Candidate_LastName
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Candidate_LastName)
+            @item.Candidate_Age
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RegionSet.Region_Name)
+            @item.NumberOfVotes
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FactionSet.Faction_Name)
+            @item.Region_Id
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Candidate_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Candidate_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Candidate_Id })
+            @item.Region_Name
+        </td>
+        <td>
+            @item.Faction_Id
+        </td>
+        <td>
+            @item.Faction_Name
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Candidate_Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Candidate_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Candidate_Id })
         </td>
     </tr>
 }
