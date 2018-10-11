@@ -3,15 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TeamEVotingWebSite.Models;
+
 
 namespace TeamEVotingWebSite.Controllers
 {
     public class UsersController : Controller
     {
+        List<UserSet> usersList = new List<UserSet>();
         // GET: Users
         public ActionResult Index()
         {
-            return View();
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            {
+                usersList = teamEVotingDBEntities.UserSet.ToList();
+
+
+            }
+            return View(usersList);
+        }
+
+        public ActionResult SeeVotedCandidates()
+        {
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities()){
+
+                var result = (from u in teamEVotingDBEntities.UserSet
+                              join c in teamEVotingDBEntities.CandidateSet on u.Candidate_Id equals c.Candidate_Id
+                              select new UserVotedCandidatesVM
+                              {
+                                  User_Id = u.User_Id,
+                                  User_FirstName = u.User_FirstName,
+                                  User_LastName = u.User_LastName,
+                                  Candidate_Id = c.Candidate_Id,
+                                  Candidate_FirstName = c.Candidate_FirstName,
+                                  Candidate_LastName = c.Candidate_LastName,
+                                  Candidate_Age = c.Candidate_Age
+
+                              }).ToList();
+
+                return View(result);
+            }
+
+
         }
 
         // GET: Users/Details/5
@@ -28,13 +61,22 @@ namespace TeamEVotingWebSite.Controllers
 
         // POST: Users/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(UserSet user)
         {
             try
             {
                 // TODO: Add insert logic here
+                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+                {
+                    if (ModelState.IsValid)
+                    {
 
+                        teamEVotingDBEntities.UserSet.Add(user);
+                        teamEVotingDBEntities.SaveChanges();
+                    }
+                }
                 return RedirectToAction("Index");
+
             }
             catch
             {

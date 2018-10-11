@@ -33,18 +33,19 @@ namespace TeamEVotingWebSite.Controllers
 
                 //                     }
                 //**?????
-                var result = from user in teamEVotingDBEntities.UserSet
-                             join uc in teamEVotingDBEntities.CandidateSet on user.Candidate_Id equals uc.Candidate_Id
-                             select new
-                             {
-                                 user.User_FirstName,
-                                 user.User_LastName,
-                                 uc.Candidate_FirstName,
-                                 uc.Candidate_LastName
-                             };
-                                     
+                //var result = from user in teamEVotingDBEntities.UserSet
+                //             join uc in teamEVotingDBEntities.CandidateSet on user.Candidate_Id equals uc.Candidate_Id
+                //             select new
+                //             {
+                //                 user.User_FirstName,
+                //                 user.User_LastName,
+                //                 uc.Candidate_FirstName,
+                //                 uc.Candidate_LastName
+                //             };
+                //var result = 
 
-            return View(result);
+
+                return View();
             }
         }
 

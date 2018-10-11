@@ -183,6 +183,7 @@
     <Compile Include="Models\UserSet.cs">
       <DependentUpon>TeamEVotingDatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserVotedCandidatesVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,13 +218,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config" />
-    <EntityDeploy Include="Models\TeamEVotingDatabaseModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TeamEVotingDatabaseModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TeamEVotingDatabaseModel.edmx.diagram">
-      <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -232,6 +226,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\TeamEVotingDatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TeamEVotingDatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TeamEVotingDatabaseModel.edmx.diagram">
+      <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\TeamEVotingWebSite - Web Deploy.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -294,10 +295,14 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Factions\Index.cshtml" />
     <Content Include="Views\Factions\Create.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\SeeVotedCandidates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Users\" />
+    <Folder Include="Views\UsersVotedCandidate\" />
+    <Folder Include="Views\UsersVotedVM\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

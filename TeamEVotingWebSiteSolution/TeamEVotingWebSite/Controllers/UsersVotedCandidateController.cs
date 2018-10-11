@@ -3,52 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TeamEVotingWebSite.Models;
 
 namespace TeamEVotingWebSite.Controllers
 {
-    public class CandidatesController : Controller
+    public class UsersVotedCandidateController : Controller
     {
-        List<CandidateSet> candidates = new List<CandidateSet>();
-        
-        // GET: Candidates
+        // GET: UsersVotedCandidate
         public ActionResult Index()
         {
-            using(TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
-            {
-
-                candidates = teamEVotingDBEntities.CandidateSet.ToList();
-
-               
-            }
-            return View(candidates);
+            return View();
         }
 
-        // GET: Candidates/Details/5
+        // GET: UsersVotedCandidate/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Candidates/Create
+        // GET: UsersVotedCandidate/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Candidates/Create
+        // POST: UsersVotedCandidate/Create
         [HttpPost]
-        public ActionResult Create(CandidateSet candidates)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
-                using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
-                {
-                    teamEVotingDB.CandidateSet.Add(candidates);
-                    teamEVotingDB.SaveChanges();
-                }
+                // TODO: Add insert logic here
 
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -56,13 +42,13 @@ namespace TeamEVotingWebSite.Controllers
             }
         }
 
-        // GET: Candidates/Edit/5
+        // GET: UsersVotedCandidate/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Candidates/Edit/5
+        // POST: UsersVotedCandidate/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -78,13 +64,13 @@ namespace TeamEVotingWebSite.Controllers
             }
         }
 
-        // GET: Candidates/Delete/5
+        // GET: UsersVotedCandidate/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Candidates/Delete/5
+        // POST: UsersVotedCandidate/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

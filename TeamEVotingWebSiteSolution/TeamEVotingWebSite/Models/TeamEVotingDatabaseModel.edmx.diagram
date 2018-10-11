@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="600a8c5d75c3409a81ffb48e7576f5c8" Name="Diagram1">
-        <EntityTypeShape EntityType="TeamEVotingDBModel.CandidateSet" Width="1.5" PointX="5.875" PointY="3.25" IsExpanded="true" />
+      <Diagram DiagramId="a82a8e4e00f9413988129a6c58465a34" Name="Diagram1">
+        <EntityTypeShape EntityType="TeamEVotingDBModel.CandidateSet" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TeamEVotingDBModel.FactionSet" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TeamEVotingDBModel.RegionSet" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamEVotingDBModel.UserSet" Width="1.5" PointX="9.375" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamEVotingDBModel.UserSet" Width="1.5" PointX="8.875" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="TeamEVotingDBModel.FK_CandidateRegion" ManuallyRouted="false" />
         <AssociationConnector Association="TeamEVotingDBModel.FK_CandidateUser" ManuallyRouted="false" />
         <AssociationConnector Association="TeamEVotingDBModel.FK_FactionCandidate" ManuallyRouted="false" />
