@@ -22,13 +22,7 @@ namespace TeamEVotingWebSite.Controllers
             return View(factionsList);
         }
 
-        public ActionResult ShowRegionOnMap()
-        {
-            string location = "Tartumaa";
-            ViewBag.location = location;
-
-            return View();
-        }
+        
 
         // GET: Factions/Details/5
         public ActionResult Details(int id)

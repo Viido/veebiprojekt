@@ -153,6 +153,7 @@
     <Compile Include="Controllers\RawSqlController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DataContainer\DataContainer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -305,7 +306,7 @@
     <Content Include="Views\Candidates\Delete.cshtml" />
     <Content Include="Views\Candidates\GroupCandidates.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Factions\ShowRegionOnMap.cshtml" />
+    <Content Include="Views\Regions\ShowRegionOnMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -59,7 +59,27 @@ namespace TeamEVotingWebSite.Controllers
                 return View(ex);
             }
         }
+        List<RegionSet> regionSets = new List<RegionSet>();
+        //Show region on map
+        public ActionResult ShowRegionOnMap(int id)
+        {
+            //string location = "Tartumaa";
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            {
+                regionSets = teamEVotingDBEntities.RegionSet.ToList();
+                foreach (RegionSet region in regionSets)
+                {
+                    if(region.Region_Id == id)
+                    {
+                        string location = region.Region_Name;
+                        ViewBag.location = location;
+                    }
+                }
 
+
+            return View();
+            }
+        }
         //using sql statement
         [HttpPost]
         public ActionResult CreateWithSql(RegionSet region)
