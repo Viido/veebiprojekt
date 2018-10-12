@@ -305,6 +305,7 @@
     <Content Include="Views\Candidates\Delete.cshtml" />
     <Content Include="Views\Candidates\GroupCandidates.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Factions\ShowRegionOnMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

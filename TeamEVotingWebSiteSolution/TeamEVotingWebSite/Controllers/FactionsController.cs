@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,14 @@ namespace TeamEVotingWebSite.Controllers
 
             }
             return View(factionsList);
+        }
+
+        public ActionResult ShowRegionOnMap()
+        {
+            string location = "Tartumaa";
+            ViewBag.location = location;
+
+            return View();
         }
 
         // GET: Factions/Details/5

@@ -139,12 +139,6 @@ namespace TeamEVotingWebSite.Controllers
                 ViewBag.oldestCandidate = oldestCandidate;
                 ViewBag.averageCandidateAge = averageCandidateAge;
 
-                //string mostPopularBrowser = (from m in teamEVotingDBEntities.VisitorInfo
-                //                             group m by m into g
-                //                             orderby g.Count() descending
-                //                             select g.Key).FirstOrDefault().ToString();
-
-                //ViewBag.mostPopularBrowser = mostPopularBrowser;
 
                 var popularBrowser = teamEVotingDBEntities.VisitorInfo.GroupBy(x => x.VisitorBrowser).OrderByDescending(gp => gp.Count()).Take(1).Select(g => g.Key).ToList();
 
@@ -159,7 +153,15 @@ namespace TeamEVotingWebSite.Controllers
                     var dateTime = item.Value;
                     var hour = dateTime.Hour;
                     var minute = dateTime.Minute;
-                    ViewBag.popularTime = hour + ":" + minute;
+                    if(minute < 10)
+                    {
+
+                    ViewBag.popularTime = hour + ":0" + minute;
+                    }
+                    else
+                    {
+                        ViewBag.popularTime = hour + ":" + minute;
+                    }
                 }
                 //List<VisitorInfo> visitorInfos = new List<VisitorInfo>();
                 //List<DateTime> dateTimes = new List<DateTime>();
