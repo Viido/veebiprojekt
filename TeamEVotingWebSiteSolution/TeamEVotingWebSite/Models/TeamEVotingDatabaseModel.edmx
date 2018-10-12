@@ -59,7 +59,7 @@
           <Property Name="VisitorBrowser" Type="nvarchar(max)" />
           <Property Name="VisitorIP" Type="nvarchar(max)" />
           <Property Name="Visited_DateTime" Type="datetime" />
-          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="User_Id" Type="int" />
         </EntityType>
         <Association Name="FK_CandidateRegion">
           <End Role="RegionSet" Type="Self.RegionSet" Multiplicity="1" />
@@ -122,7 +122,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserSetVisitorInfo">
-          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
           <End Role="VisitorInfo" Type="Self.VisitorInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserSet">
@@ -225,7 +225,7 @@
           <Property Name="VisitorBrowser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VisitorIP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Visited_DateTime" Type="DateTime" Precision="3" />
-          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="User_Id" Type="Int32" />
           <NavigationProperty Name="UserSet" Relationship="Self.FK_UserSetVisitorInfo" FromRole="VisitorInfo" ToRole="UserSet" />
         </EntityType>
         <Association Name="FK_CandidateRegion">
@@ -265,7 +265,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserSetVisitorInfo">
-          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
           <End Role="VisitorInfo" Type="Self.VisitorInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserSet">

@@ -21,7 +21,6 @@ namespace TeamEVotingWebSite.Models
             this.CandidateSet = new HashSet<CandidateSet>();
             this.FactionSet = new HashSet<FactionSet>();
         }
-
         [Required]
         public int Region_Id { get; set; }
         [Required]

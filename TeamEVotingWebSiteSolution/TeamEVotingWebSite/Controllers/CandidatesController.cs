@@ -15,7 +15,7 @@ namespace TeamEVotingWebSite.Controllers
         // GET: Candidates
         public ActionResult Index()
         {
-           
+
             using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
 
@@ -24,16 +24,16 @@ namespace TeamEVotingWebSite.Controllers
                               join f in teamEVotingDBEntities.FactionSet on c.Faction_Id equals f.Faction_Id
                               select new CreateCandidateVM
                               {
-                               Faction_Id = f.Faction_Id,
-                               Region_Id = r.Region_Id,
-                               Candidate_Id = c.Candidate_Id,
-                               Candidate_Age = c.Candidate_Age,
-                               Candidate_FirstName = c.Candidate_FirstName,
-                               Candidate_LastName = c.Candidate_LastName,
-                               Faction_Name = f.Faction_Name,
-                               NumberOfVotes = c.NumberOfVotes,
-                               Region_Name = r.Region_Name
-                               
+                                  Faction_Id = f.Faction_Id,
+                                  Region_Id = r.Region_Id,
+                                  Candidate_Id = c.Candidate_Id,
+                                  Candidate_Age = c.Candidate_Age,
+                                  Candidate_FirstName = c.Candidate_FirstName,
+                                  Candidate_LastName = c.Candidate_LastName,
+                                  Faction_Name = f.Faction_Name,
+                                  NumberOfVotes = c.NumberOfVotes,
+                                  Region_Name = r.Region_Name
+
 
                               }).ToList();
 
@@ -64,25 +64,25 @@ namespace TeamEVotingWebSite.Controllers
         [HttpPost]
         public ActionResult Create(CandidateSet candidates)
         {
-            
-                
-           
-                using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
-                {
-                    teamEVotingDB.CandidateSet.Add(candidates);
-                    candidates.NumberOfVotes = 0;
-                    teamEVotingDB.SaveChanges();
-                }
 
-                return RedirectToAction("Index");
+
+
+            using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
+            {
+                teamEVotingDB.CandidateSet.Add(candidates);
+                candidates.NumberOfVotes = 0;
+                teamEVotingDB.SaveChanges();
             }
 
-            
-           
-               
-            
-        
-    
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
 
         // GET: Candidates/Edit/5
         public ActionResult Edit(int id)
@@ -112,7 +112,7 @@ namespace TeamEVotingWebSite.Controllers
             using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
 
-            return View(teamEVotingDBEntities.CandidateSet.Where(x => x.Candidate_Id == id).FirstOrDefault());
+                return View(teamEVotingDBEntities.CandidateSet.Where(x => x.Candidate_Id == id).FirstOrDefault());
             }
         }
         public ActionResult GroupCandidates()
@@ -139,12 +139,69 @@ namespace TeamEVotingWebSite.Controllers
                 ViewBag.oldestCandidate = oldestCandidate;
                 ViewBag.averageCandidateAge = averageCandidateAge;
 
-                HttpRequest req = System.Web.HttpContext.Current.Request;
-                string browserName = req.Browser.Browser;
-                ViewBag.browser = browserName;
+                //string mostPopularBrowser = (from m in teamEVotingDBEntities.VisitorInfo
+                //                             group m by m into g
+                //                             orderby g.Count() descending
+                //                             select g.Key).FirstOrDefault().ToString();
 
-                string userIpAddress = HttpContext.Request.UserHostAddress;
-                ViewBag.ip = userIpAddress;
+                //ViewBag.mostPopularBrowser = mostPopularBrowser;
+
+                var popularBrowser = teamEVotingDBEntities.VisitorInfo.GroupBy(x => x.VisitorBrowser).OrderByDescending(gp => gp.Count()).Take(1).Select(g => g.Key).ToList();
+
+                foreach (var item in popularBrowser)
+                {
+                    ViewBag.popularBrowser = item;
+                }
+                var popularVisitingTime = teamEVotingDBEntities.VisitorInfo.GroupBy(t => t.Visited_DateTime).OrderByDescending(gp => gp.Count()).Take(1).Select(g => g.Key).ToList();
+
+                foreach (var item in popularVisitingTime)
+                {
+                    var dateTime = item.Value;
+                    var hour = dateTime.Hour;
+                    var minute = dateTime.Minute;
+                    ViewBag.popularTime = hour + ":" + minute;
+                }
+                //List<VisitorInfo> visitorInfos = new List<VisitorInfo>();
+                //List<DateTime> dateTimes = new List<DateTime>();
+                //visitorInfos = teamEVotingDBEntities.VisitorInfo.ToList();
+
+                //foreach (var item in visitorInfos)
+                //{
+                //    var date = item.Visited_DateTime.Value;
+                //    dateTimes.Add(date);
+
+                //}
+
+                //double doubleAverageTicks = dateTimes.Average(timeSpan => timeSpan.Ticks);
+                //long longAverageTicks = Convert.ToInt64(doubleAverageTicks);
+
+                //var ok = new TimeSpan(longAverageTicks);
+                //DateTime average = new DateTime((long)dateTimes.Average(x => x.Ticks));
+
+                //Int64 average = (Int64)dateTimes.Select(d => d.Ticks).Average();
+                //var averageTicks = (long)(from o in teamEVotingDBEntities.VisitorInfo select o.Visited_DateTime.Value.TimeOfDay.Ticks).Average();
+                //var averageTime = new DateTime(averageTicks);
+                //DateTime avgDateTime = new DateTime(average);
+                //ViewBag.popularTime = avgDateTime;
+
+                //HttpRequest req = System.Web.HttpContext.Current.Request;
+                //string browserName = req.Browser.Browser;
+                //ViewBag.browser = browserName;
+
+                ////string userIpAddress = HttpContext.Request.UserHostAddress;
+                ////ViewBag.ip = userIpAddress;
+                //string ipAddress = string.Empty;
+                //if(HttpContext.Request.ServerVariables["HTTP_X__FORWARDER_FOR"] != null)
+                //{
+                //    ipAddress = HttpContext.Request.ServerVariables["HTTP_X__FORWARDER_FOR"].ToString();
+                //}
+                //else if(HttpContext.Request.UserHostAddress.Length != 0)
+                //{
+                //    ipAddress = HttpContext.Request.UserHostAddress;
+                //}
+                //ViewBag.ip = ipAddress;
+
+
 
 
             }

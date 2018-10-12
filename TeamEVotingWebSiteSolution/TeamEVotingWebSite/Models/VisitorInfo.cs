@@ -11,15 +11,20 @@ namespace TeamEVotingWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class VisitorInfo
     {
+        [Required]
         public int Visitor_Id { get; set; }
+        [Required]
         public string VisitorLandingPage { get; set; }
+        [Required]
         public string VisitorBrowser { get; set; }
+        [Required]
         public string VisitorIP { get; set; }
         public Nullable<System.DateTime> Visited_DateTime { get; set; }
-        public int User_Id { get; set; }
+        public Nullable<int> User_Id { get; set; }
     
         public virtual UserSet UserSet { get; set; }
     }

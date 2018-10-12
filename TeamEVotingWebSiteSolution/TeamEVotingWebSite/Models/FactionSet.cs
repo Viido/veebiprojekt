@@ -26,6 +26,7 @@ namespace TeamEVotingWebSite.Models
         public int Faction_Id { get; set; }
         [Required]
         public string Faction_Name { get; set; }
+        [Required]
         public int NumberOfMembers { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
