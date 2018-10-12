@@ -60,9 +60,16 @@ namespace TeamEVotingWebSite.Controllers
                 list.Add(visitorInfo.VisitorBrowser = browserName);
                 list.Add(visitorInfo.VisitorLandingPage = viewPath);
                 list.Add(visitorInfo.User_Id = null);
-                
+                if(visitorInfo.VisitorIP != "::1")
+                {
+
                 object[] allitems = list.ToArray();
                 teamEVotingDBEntities.Database.ExecuteSqlCommand("INSERT INTO VisitorInfo(Visited_DateTime, VisitorIP, VisitorBrowser, VisitorLandingPage, User_Id) values (@p0,@p1,@p2,@p3,@p4)", allitems);
+                }
+                else
+                {
+
+                }
                 
                
 
