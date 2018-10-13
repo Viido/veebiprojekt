@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta charset="utf-8"/>
+    <meta keywords ="HTML, CSS, JQUERY, C#"/>
+    <meta author="Koit Kõrvel"/>
+    <meta content="Electronic Voting Application helps users to candidate and vote for candidates."
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>@ViewBag.Title - Electronic Voting Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -30,6 +33,8 @@
                         <li>@Html.ActionLink("Candidates", "Index", "Candidates")</li>
 
                         <li>@Html.ActionLink("Statistics of candidates", "GroupCandidates", "Candidates")</li>
+
+                        <li>@Html.ActionLink("Raw Sql", "Index", "RawSql")</li>
                     </ul>
                 </div>
             </div>
