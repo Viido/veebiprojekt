@@ -1,17 +1,19 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta keywords ="HTML, CSS, JQUERY, C#"/>
-    <meta author="Koit Kõrvel"/>
-    <meta content="Electronic Voting Application helps users to candidate and vote for candidates."
+<head title="Electronic Voting Application">
+    <meta charset="utf-8" />
+    <meta keywords="HTML, CSS, JQUERY, C#" />
+    <meta author="Koit Kõrvel" />
+    <meta name="description" content="Electronic Voting Application helps users to candidate and vote for candidates.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>@ViewBag.Title - Electronic Voting Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,24 +23,33 @@
                 </button>
                 @Html.ActionLink("Electronic Voting application", "WelcomePage", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-                <div class="navbar-collapse collapse">
 
-                    <ul class="nav navbar-nav">
-                        @*<li>@Html.ActionLink("Welcome Page", "WelcomePage", "Home")</li>*@
+            <div class="navbar-collapse collapse">
 
-                        <li>@Html.ActionLink("Factions", "Index", "Factions")</li>
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Welcome Page", "WelcomePage", "Home")</li>*@
 
-                        <li>@Html.ActionLink("Regions", "Index", "Regions")</li>
+                    <li>@Html.ActionLink("Factions", "Index", "Factions")</li>
 
-                        <li>@Html.ActionLink("Candidates", "Index", "Candidates")</li>
+                    <li>@Html.ActionLink("Regions", "Index", "Regions")</li>
 
-                        <li>@Html.ActionLink("Statistics of candidates", "GroupCandidates", "Candidates")</li>
+                    <li>@Html.ActionLink("Candidates", "Index", "Candidates")</li>
 
-                        <li>@Html.ActionLink("Raw Sql", "Index", "RawSql")</li>
-                    </ul>
-                </div>
+                    <li>@Html.ActionLink("Statistics of candidates", "GroupCandidates", "Candidates")</li>
+
+                    <li>@Html.ActionLink("Raw Sql", "Index", "RawSql")</li>
+
+                </ul>
             </div>
+        </div>
     </div>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <div class="container body-content">
         @RenderBody()

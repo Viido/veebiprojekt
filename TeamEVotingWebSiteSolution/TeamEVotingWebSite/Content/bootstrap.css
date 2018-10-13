@@ -8189,4 +8189,20 @@ button.close {
         display: none !important;
     }
 }
+
+.goog-te-gadget-icon {
+    display: none;
+}
+
+.goog-te-gadget-simple a {
+    text-decoration: none !important;
+}
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+}
 /*# sourceMappingURL=bootstrap.css.map */
