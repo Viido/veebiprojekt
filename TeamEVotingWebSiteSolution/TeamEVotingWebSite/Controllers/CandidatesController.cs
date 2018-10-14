@@ -120,6 +120,7 @@ namespace TeamEVotingWebSite.Controllers
             CandidateSet candidate = new CandidateSet();
             using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
+                //kasutab Count, Sum, Min, Max, Average käske, LINQ = SQL
                 var candidatesCount = teamEVotingDBEntities.CandidateSet.Count();
                 var factionsCount = teamEVotingDBEntities.FactionSet.Count();
                 var regionsCount = teamEVotingDBEntities.RegionSet.Count();
@@ -163,49 +164,7 @@ namespace TeamEVotingWebSite.Controllers
                         ViewBag.popularTime = hour + ":" + minute;
                     }
                 }
-                //List<VisitorInfo> visitorInfos = new List<VisitorInfo>();
-                //List<DateTime> dateTimes = new List<DateTime>();
-                //visitorInfos = teamEVotingDBEntities.VisitorInfo.ToList();
-
-                //foreach (var item in visitorInfos)
-                //{
-                //    var date = item.Visited_DateTime.Value;
-                //    dateTimes.Add(date);
-
-                //}
-
-                //double doubleAverageTicks = dateTimes.Average(timeSpan => timeSpan.Ticks);
-                //long longAverageTicks = Convert.ToInt64(doubleAverageTicks);
-
-                //var ok = new TimeSpan(longAverageTicks);
-                //DateTime average = new DateTime((long)dateTimes.Average(x => x.Ticks));
-
-                //Int64 average = (Int64)dateTimes.Select(d => d.Ticks).Average();
-                //var averageTicks = (long)(from o in teamEVotingDBEntities.VisitorInfo select o.Visited_DateTime.Value.TimeOfDay.Ticks).Average();
-                //var averageTime = new DateTime(averageTicks);
-                //DateTime avgDateTime = new DateTime(average);
-                //ViewBag.popularTime = avgDateTime;
-
-                //HttpRequest req = System.Web.HttpContext.Current.Request;
-                //string browserName = req.Browser.Browser;
-                //ViewBag.browser = browserName;
-
-                ////string userIpAddress = HttpContext.Request.UserHostAddress;
-                ////ViewBag.ip = userIpAddress;
-                //string ipAddress = string.Empty;
-                //if(HttpContext.Request.ServerVariables["HTTP_X__FORWARDER_FOR"] != null)
-                //{
-                //    ipAddress = HttpContext.Request.ServerVariables["HTTP_X__FORWARDER_FOR"].ToString();
-                //}
-                //else if(HttpContext.Request.UserHostAddress.Length != 0)
-                //{
-                //    ipAddress = HttpContext.Request.UserHostAddress;
-                //}
-                //ViewBag.ip = ipAddress;
-
-
-
-
+                
             }
 
 

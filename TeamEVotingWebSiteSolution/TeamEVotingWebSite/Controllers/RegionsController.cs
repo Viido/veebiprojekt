@@ -64,6 +64,7 @@ namespace TeamEVotingWebSite.Controllers
         public ActionResult ShowRegionOnMap(int id)
         {
             //string location = "Tartumaa";
+            //käib läbi regionite ja siis valib valitud regioni, annab edasi ViewBagina Google mapsi ja siis kuvab seda mapsis.
             using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
                 regionSets = teamEVotingDBEntities.RegionSet.ToList();
