@@ -120,7 +120,11 @@ namespace TeamEVotingWebSite.Controllers
         // GET: Users/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            {
+
+                return View(teamEVotingDBEntities.UserSet.Where(x => x.User_Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Users/Delete/5
@@ -129,7 +133,12 @@ namespace TeamEVotingWebSite.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+                {
+                    UserSet userSet = teamEVotingDBEntities.UserSet.Where(x => x.User_Id == id).FirstOrDefault();
+                    teamEVotingDBEntities.UserSet.Remove(userSet);
+                    teamEVotingDBEntities.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }

@@ -81,7 +81,11 @@ namespace TeamEVotingWebSite.Controllers
         // GET: Factions/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            {
+
+                return View(teamEVotingDBEntities.FactionSet.Where(x => x.Faction_Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Factions/Delete/5
@@ -90,7 +94,12 @@ namespace TeamEVotingWebSite.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+                {
+                    FactionSet factionSet = teamEVotingDBEntities.FactionSet.Where(x => x.Faction_Id == id).FirstOrDefault();
+                    teamEVotingDBEntities.FactionSet.Remove(factionSet);
+                    teamEVotingDBEntities.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }

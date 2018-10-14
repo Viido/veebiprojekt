@@ -126,7 +126,11 @@ namespace TeamEVotingWebSite.Controllers
         // GET: Regions/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            {
+
+                return View(teamEVotingDBEntities.RegionSet.Where(x => x.Region_Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Regions/Delete/5
@@ -135,7 +139,12 @@ namespace TeamEVotingWebSite.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+                {
+                    RegionSet regionSet = teamEVotingDBEntities.RegionSet.Where(x => x.Region_Id == id).FirstOrDefault();
+                    teamEVotingDBEntities.RegionSet.Remove(regionSet);
+                    teamEVotingDBEntities.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
