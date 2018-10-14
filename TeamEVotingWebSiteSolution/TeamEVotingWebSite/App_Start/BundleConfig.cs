@@ -25,6 +25,10 @@ namespace TeamEVotingWebSite
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            //muudetud
+            //bundles.Add(new StyleBundle("~/Content/css/translate").Include(
+            //         "~/Content/bootstrap.css",
+            //         "~/Content/site.css"));
 
 
         }
