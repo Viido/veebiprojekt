@@ -32,6 +32,8 @@
           <Property Name="Faction_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Faction_Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="NumberOfMembers" Type="int" Nullable="false" />
+          <Property Name="Faction_ImageLogo" Type="varchar" MaxLength="250" />
+          <Property Name="Faction_ImageLogoTitle" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="RegionSet">
           <Key>
@@ -54,7 +56,7 @@
           <Key>
             <PropertyRef Name="Visitor_Id" />
           </Key>
-          <Property Name="Visitor_Id" Type="int" Nullable="false" />
+          <Property Name="Visitor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VisitorLandingPage" Type="nvarchar(max)" />
           <Property Name="VisitorBrowser" Type="nvarchar(max)" />
           <Property Name="VisitorIP" Type="nvarchar(max)" />
@@ -192,6 +194,8 @@
           <Property Name="Faction_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Faction_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NumberOfMembers" Type="Int32" Nullable="false" />
+          <Property Name="Faction_ImageLogo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Faction_ImageLogoTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CandidateSet" Relationship="Self.FK_FactionCandidate" FromRole="FactionSet" ToRole="CandidateSet" />
           <NavigationProperty Name="RegionSet" Relationship="Self.FactionRegionSet" FromRole="FactionSet" ToRole="RegionSet" />
         </EntityType>
@@ -220,7 +224,7 @@
           <Key>
             <PropertyRef Name="Visitor_Id" />
           </Key>
-          <Property Name="Visitor_Id" Type="Int32" Nullable="false" />
+          <Property Name="Visitor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VisitorLandingPage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VisitorBrowser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VisitorIP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -332,6 +336,8 @@
                 <ScalarProperty Name="Faction_Id" ColumnName="Faction_Id" />
                 <ScalarProperty Name="Faction_Name" ColumnName="Faction_Name" />
                 <ScalarProperty Name="NumberOfMembers" ColumnName="NumberOfMembers" />
+                <ScalarProperty Name="Faction_ImageLogo" ColumnName="Faction_ImageLogo" />
+                <ScalarProperty Name="Faction_ImageLogoTitle" ColumnName="Faction_ImageLogoTitle" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
