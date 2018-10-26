@@ -1,0 +1,7 @@
+﻿User-agent: *
+Disallow: /
+Allow: /Candidates/Index
+Allow: /Factions/Index
+Allow: /Home/WelcomePage
+Allow: /RawSql/Index
+Allow: /Regions/Index
