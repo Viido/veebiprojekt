@@ -3,8 +3,8 @@
 <head title="Electronic Voting Application">
     <meta charset="utf-8" />
     <meta name="keywords" content="HTML, CSS, JQUERY, C#" />
-    <meta name="author" content="Koit Kõrvel" />
-    <meta name="description" content="Electronic Voting Application helps users to candidate and vote for candidates. User can choose candidate from different factions and regions. Each region is shown also on Google Maps.">
+    <meta name="author" content="Koit Kõrvel, Viido Kaur Lutsar" />
+    <meta name="description" content="Electronic Voting Application helps users to candidate and vote for candidates. User can vote for candidates from different factions and regions. Each region is also shown on Google Maps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>@ViewBag.Title - Electronic Voting Application</title>
     @*originaal*@
@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Electronic Voting application", "WelcomePage", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Electronic Voting Application", "WelcomePage", "Home", new { area = "" }, new { @class = "navbar-brand", title="Home page"})
             </div>
 
             <div class="navbar-collapse collapse">
@@ -33,15 +33,15 @@
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Welcome Page", "WelcomePage", "Home")</li>*@
 
-                    <li>@Html.ActionLink("Factions", "Index", "Factions")</li>
+                    <li>@Html.ActionLink("Factions", "Index", "Factions", null, new { title="View registered factions" })</li>
 
-                    <li>@Html.ActionLink("Regions", "Index", "Regions")</li>
+                    <li>@Html.ActionLink("Regions", "Index", "Regions", null, new { title="View represented regions" })</li>
 
-                    <li>@Html.ActionLink("Candidates", "Index", "Candidates")</li>
+                    <li>@Html.ActionLink("Candidates", "Index", "Candidates", null, new { title="View registered candidates" })</li>
 
-                    <li>@Html.ActionLink("Statistics of candidates", "GroupCandidates", "Candidates")</li>
+                    <li>@Html.ActionLink("Statistics of Candidates", "GroupCandidates", "Candidates", null, new { title="View statistics of candidates" })</li>
 
-                    <li>@Html.ActionLink("Raw Sql", "Index", "RawSql")</li>
+                    <li>@Html.ActionLink("Raw SQL", "Index", "RawSql", null, new { title="View raw SQL" })</li>
 
                 </ul>
             </div>
