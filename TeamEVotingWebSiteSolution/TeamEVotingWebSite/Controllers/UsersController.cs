@@ -62,7 +62,7 @@ namespace TeamEVotingWebSite.Controllers
             CandidateSet candidateSet = new CandidateSet();
             using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
             {
-
+                //kandidaatide lisamine listi, pärast näitab neid dropdownlistis
                 user.candidates = teamEVotingDB.CandidateSet.ToList();
                 //var fullName = candidateSet.Candidate_FirstName + candidateSet.Candidate_LastName;
                 //user.candidates = 
@@ -81,7 +81,9 @@ namespace TeamEVotingWebSite.Controllers
                 using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
                 {
 
-
+                    var selectedCandidate = user.Candidate_Id;
+                    var addVotes = teamEVotingDBEntities.CandidateSet.Single(addVote => addVote.Candidate_Id == selectedCandidate);
+                    addVotes.NumberOfVotes++;
                     teamEVotingDBEntities.UserSet.Add(user);
                     teamEVotingDBEntities.SaveChanges();
 

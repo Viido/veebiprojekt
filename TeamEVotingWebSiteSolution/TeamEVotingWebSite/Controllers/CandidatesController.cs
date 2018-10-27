@@ -69,6 +69,10 @@ namespace TeamEVotingWebSite.Controllers
 
             using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
             {
+                //Faction member + 1, sest üks member on juures nüüd
+                var selectedFaction = candidates.Faction_Id;
+                var addMember = teamEVotingDB.FactionSet.Single(addMembers => addMembers.Faction_Id == selectedFaction);
+                addMember.NumberOfMembers++;
                 teamEVotingDB.CandidateSet.Add(candidates);
                 candidates.NumberOfVotes = 0;
                 teamEVotingDB.SaveChanges();
@@ -154,17 +158,17 @@ namespace TeamEVotingWebSite.Controllers
                     var dateTime = item.Value;
                     var hour = dateTime.Hour;
                     var minute = dateTime.Minute;
-                    if(minute < 10)
+                    if (minute < 10)
                     {
 
-                    ViewBag.popularTime = hour + ":0" + minute;
+                        ViewBag.popularTime = hour + ":0" + minute;
                     }
                     else
                     {
                         ViewBag.popularTime = hour + ":" + minute;
                     }
                 }
-                
+
             }
 
 
