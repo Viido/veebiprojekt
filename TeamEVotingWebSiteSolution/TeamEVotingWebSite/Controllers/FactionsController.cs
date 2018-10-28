@@ -14,7 +14,7 @@ namespace TeamEVotingWebSite.Controllers
         // GET: Factions
         public ActionResult Index()
         {
-            using(TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
                 factionsList = teamEVotingDBEntities.FactionSet.ToList();
 
@@ -22,7 +22,7 @@ namespace TeamEVotingWebSite.Controllers
             return View(factionsList);
         }
 
-        
+
 
         // GET: Factions/Details/5
         public ActionResult Details(int id)
@@ -40,21 +40,21 @@ namespace TeamEVotingWebSite.Controllers
         [HttpPost]
         public ActionResult Create(FactionSet factionSet)
         {
-            try
-            {
-                using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
-                {
-                    teamEVotingDB.FactionSet.Add(factionSet);
-                    teamEVotingDB.SaveChanges();
-                }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            using (TeamEVotingDBEntities teamEVotingDB = new TeamEVotingDBEntities())
             {
-                return View();
+                if (ModelState.IsValid)
+                {
+
+                teamEVotingDB.FactionSet.Add(factionSet);
+                teamEVotingDB.SaveChanges();
+                }
             }
+
+            return RedirectToAction("Index");
         }
+
+
 
         // GET: Factions/Edit/5
         public ActionResult Edit(int id)

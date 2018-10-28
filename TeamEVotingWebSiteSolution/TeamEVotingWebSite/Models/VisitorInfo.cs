@@ -23,7 +23,9 @@ namespace TeamEVotingWebSite.Models
         public string VisitorBrowser { get; set; }
         [Required]
         public string VisitorIP { get; set; }
+        [Required]
         public Nullable<System.DateTime> Visited_DateTime { get; set; }
+        [Required]
         public Nullable<int> User_Id { get; set; }
     
         public virtual UserSet UserSet { get; set; }

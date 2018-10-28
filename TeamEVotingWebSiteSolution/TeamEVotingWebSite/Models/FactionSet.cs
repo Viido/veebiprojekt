@@ -21,13 +21,16 @@ namespace TeamEVotingWebSite.Models
             this.CandidateSet = new HashSet<CandidateSet>();
             this.RegionSet = new HashSet<RegionSet>();
         }
+
         [Required]
         public int Faction_Id { get; set; }
         [Required]
         public string Faction_Name { get; set; }
         [Required]
         public int NumberOfMembers { get; set; }
+        
         public string Faction_ImageLogo { get; set; }
+        
         public string Faction_ImageLogoTitle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

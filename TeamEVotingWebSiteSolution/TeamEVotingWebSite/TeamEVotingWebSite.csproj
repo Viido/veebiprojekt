@@ -237,7 +237,6 @@
       <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>
       <LastGenOutput>TeamEVotingDatabaseModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\TeamEVotingDatabaseModel.edmx.sql" />
     <Content Include="Models\TeamEVotingDatabaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TeamEVotingDatabaseModel.edmx</DependentUpon>

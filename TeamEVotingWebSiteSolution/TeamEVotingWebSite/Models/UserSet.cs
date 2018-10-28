@@ -29,7 +29,10 @@ namespace TeamEVotingWebSite.Models
         public string User_LastName { get; set; }
         [Required]
         public int Candidate_Id { get; set; }
+        
         public string User_Email { get; set; }
+        
+        public string User_Password { get; set; }
     
         public virtual CandidateSet CandidateSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

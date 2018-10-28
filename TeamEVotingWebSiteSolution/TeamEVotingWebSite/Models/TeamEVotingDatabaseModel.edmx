@@ -51,6 +51,7 @@
           <Property Name="User_LastName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Candidate_Id" Type="int" Nullable="false" />
           <Property Name="User_Email" Type="nvarchar(max)" />
+          <Property Name="User_Password" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="VisitorInfo">
           <Key>
@@ -217,6 +218,7 @@
           <Property Name="User_LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Candidate_Id" Type="Int32" Nullable="false" />
           <Property Name="User_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CandidateSet" Relationship="Self.FK_CandidateUser" FromRole="UserSet" ToRole="CandidateSet" />
           <NavigationProperty Name="VisitorInfo" Relationship="Self.FK_UserSetVisitorInfo" FromRole="UserSet" ToRole="VisitorInfo" />
         </EntityType>
@@ -357,6 +359,7 @@
                 <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
                 <ScalarProperty Name="Candidate_Id" ColumnName="Candidate_Id" />
                 <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+                <ScalarProperty Name="User_Password" ColumnName="User_Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
