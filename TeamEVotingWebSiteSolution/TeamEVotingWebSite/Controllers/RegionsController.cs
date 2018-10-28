@@ -13,7 +13,7 @@ namespace TeamEVotingWebSite.Controllers
         // GET: Regions
         public ActionResult Index()
         {
-            using(TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
                 regionsList = teamEVotingDBEntities.RegionSet.ToList();
                 //regionsList = teamEVotingDBEntities.RegionSet.SqlQuery("select * from RegionSet").ToList();
@@ -37,27 +37,22 @@ namespace TeamEVotingWebSite.Controllers
         [HttpPost]
         public ActionResult Create(RegionSet region)
         {
-            try
+
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
-                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+
+                if (ModelState.IsValid)
                 {
-                   
-                    if (ModelState.IsValid)
-                    {
 
                     teamEVotingDBEntities.RegionSet.Add(region);
                     teamEVotingDBEntities.SaveChanges();
 
-                    }
-
                 }
 
-                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-                return View(ex);
-            }
+
+            return RedirectToAction("Index");
+
         }
         List<RegionSet> regionSets = new List<RegionSet>();
         //Show region on map
@@ -70,7 +65,7 @@ namespace TeamEVotingWebSite.Controllers
                 regionSets = teamEVotingDBEntities.RegionSet.ToList();
                 foreach (RegionSet region in regionSets)
                 {
-                    if(region.Region_Id == id)
+                    if (region.Region_Id == id)
                     {
                         string location = region.Region_Name;
                         ViewBag.location = location;
@@ -78,7 +73,7 @@ namespace TeamEVotingWebSite.Controllers
                 }
 
 
-            return View();
+                return View();
             }
         }
         //using sql statement
@@ -87,7 +82,7 @@ namespace TeamEVotingWebSite.Controllers
         {
             try
             {
-                using(TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
+                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
                 {
                     //teamEVotingDBEntities.Database.ExecuteSqlCommand("INSERT into RegionSet (Region_Name) VALUES (@Region_Name)");
                     //teamEVotingDBEntities.SaveChanges();

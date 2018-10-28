@@ -15,12 +15,13 @@ namespace TeamEVotingWebSite.Models
 
     public partial class CandidateSet
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CandidateSet()
         {
             this.UserSet = new HashSet<UserSet>();
         }
-
+    
         [Required]
         public int Candidate_Id { get; set; }
         [Required]
