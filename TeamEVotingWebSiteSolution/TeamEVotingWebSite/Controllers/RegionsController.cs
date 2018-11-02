@@ -132,21 +132,17 @@ namespace TeamEVotingWebSite.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
-                {
-                    RegionSet regionSet = teamEVotingDBEntities.RegionSet.Where(x => x.Region_Id == id).FirstOrDefault();
-                    teamEVotingDBEntities.RegionSet.Remove(regionSet);
-                    teamEVotingDBEntities.SaveChanges();
-                }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
-                return View();
+                RegionSet regionSet = teamEVotingDBEntities.RegionSet.Where(x => x.Region_Id == id).FirstOrDefault();
+                teamEVotingDBEntities.RegionSet.Remove(regionSet);
+                teamEVotingDBEntities.SaveChanges();
             }
+
+            return RedirectToAction("Index");
         }
+
     }
 }
+

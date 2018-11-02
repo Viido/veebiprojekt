@@ -4,11 +4,11 @@
     ViewBag.Title = "Index of Regions";
 }
 
-<h2>Index</h2>
+<h2>Regions of Estonia</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Region_Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Region_Id }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.Region_Id }) |*@
             @Html.ActionLink("Details", "Details", new { id = item.Region_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Region_Id }) |
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.Region_Id }) |*@
             @Html.ActionLink("Show on map", "ShowRegionOnMap", new { id = item.Region_Id })
         </td>
     </tr>

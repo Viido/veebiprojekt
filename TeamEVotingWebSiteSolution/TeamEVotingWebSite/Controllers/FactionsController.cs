@@ -46,8 +46,8 @@ namespace TeamEVotingWebSite.Controllers
                 if (ModelState.IsValid)
                 {
 
-                teamEVotingDB.FactionSet.Add(factionSet);
-                teamEVotingDB.SaveChanges();
+                    teamEVotingDB.FactionSet.Add(factionSet);
+                    teamEVotingDB.SaveChanges();
                 }
             }
 
@@ -92,21 +92,17 @@ namespace TeamEVotingWebSite.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
-                {
-                    FactionSet factionSet = teamEVotingDBEntities.FactionSet.Where(x => x.Faction_Id == id).FirstOrDefault();
-                    teamEVotingDBEntities.FactionSet.Remove(factionSet);
-                    teamEVotingDBEntities.SaveChanges();
-                }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities())
             {
-                return View();
+                FactionSet factionSet = teamEVotingDBEntities.FactionSet.Where(x => x.Faction_Id == id).FirstOrDefault();
+                teamEVotingDBEntities.FactionSet.Remove(factionSet);
+                teamEVotingDBEntities.SaveChanges();
             }
+
+            return RedirectToAction("Index");
         }
+
     }
 }
+
