@@ -11,7 +11,7 @@ namespace TeamEVotingWebSite
     {
         public static void RegisterAuth()
         {
-            GoogleOAuth2Client clientGoog = new GoogleOAuth2Client("31967651738-cgfc66epca68r86022qnojn1t8f7mlor.apps.googleusercontent.com", "FPk1lPo1WD_VGSjxCjwqut3n");
+            GoogleOAuth2Client clientGoog = new GoogleOAuth2Client("117580050702-8crrsbahd612scj7mmattdj4q6shdneg.apps.googleusercontent.com", "1PEiScjOjxCuUMoqs5BCizmM");
             IDictionary<string, string> extraData = new Dictionary<string, string>();
             OpenAuth.AuthenticationClients.Add("google", () => clientGoog, extraData);
         }
