@@ -33,15 +33,17 @@
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Welcome Page", "WelcomePage", "Home")</li>*@
 
-                    <li>@Html.ActionLink("Factions", "Index", "Factions", null, new { title="View registered factions" })</li>
+                    <li>@Html.ActionLink("Factions", "Index", "Factions", null, new { title = "View registered factions" })</li>
 
-                    <li>@Html.ActionLink("Regions", "Index", "Regions", null, new { title="View represented regions" })</li>
+                    <li>@Html.ActionLink("Regions", "Index", "Regions", null, new { title = "View represented regions" })</li>
 
-                    <li>@Html.ActionLink("Candidates", "Index", "Candidates", null, new { title="View registered candidates" })</li>
+                    <li>@Html.ActionLink("Candidates", "Index", "Candidates", null, new { title = "View registered candidates" })</li>
 
-                    <li>@Html.ActionLink("Statistics of Candidates", "GroupCandidates", "Candidates", null, new { title="View statistics of candidates" })</li>
+                    <li>@Html.ActionLink("Statistics of Candidates", "GroupCandidates", "Candidates", null, new { title = "View statistics of candidates" })</li>
 
-                    <li>@Html.ActionLink("Raw SQL", "Index", "RawSql", null, new { title="View raw SQL" })</li>
+                    <li>@Html.ActionLink("Raw SQL", "Index", "RawSql", null, new { title = "View raw SQL" })</li>
+
+                    <li>@Html.ActionLink("Vote!", "Create", "Users", null, new { title = "Vote for candidate" })</li>
 
                 </ul>
 

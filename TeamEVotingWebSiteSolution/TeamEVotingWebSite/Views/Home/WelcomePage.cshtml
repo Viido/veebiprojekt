@@ -11,7 +11,9 @@
         Instead of having to go to a voting centre, you can just vote electronically from the comforts of your home!</span></p>
     <h3>E-Voting app views:</h3>
 </div>
+<button onclick="HidePictures()">Hide pictures</button>
 
+<br/>
 <div id="welcomePagePictures">
     <img src="~/Pictures/LogimineValik.png" title="Logimise valik" alt="Logimise valik" />
     <img src="~/Pictures/Logitud.png" title="Sisse logitud" alt="Sisse logitud" />
@@ -25,8 +27,18 @@
     <img src="~/Pictures/Statistika.png" title="Statistika vaade" alt="Statistika vaade" />
     <img src="~/Pictures/Tulemused.png" title="Häälte tulemused" alt="Häälte tulemused" />
     <img src="~/Pictures/KKK.png" title="KKK Küsimused" alt="KKK Küsimused" />
-    
 </div>
+<script>
+    function HidePictures() {
+        var x = document.getElementById("welcomePagePictures");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
 <p>You are using @ViewBag.browser. (@ViewBag.ip)</p>
 <p>You are on @ViewBag.viewPath</p>
 <p>We are collecting data from you! Don´t worry all data is in safe and we won´t share it to anyone!</p>
