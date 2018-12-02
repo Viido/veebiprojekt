@@ -45,8 +45,11 @@ namespace TeamEVotingWebSite.TestCases
 
             driver.FindElement(By.CssSelector(".btn.btn-default")).Click();
 
-            //TODO delete the test candidate
-            //Thread.Sleep(5000);
+            IList<IWebElement> deleteButtons = driver.FindElements(By.CssSelector("[href^='/Candidates/Delete/']"));
+
+            deleteButtons.Last().Click();
+
+            driver.FindElement(By.CssSelector(".btn.btn-default")).Click();
         }
 
         [TearDown]
