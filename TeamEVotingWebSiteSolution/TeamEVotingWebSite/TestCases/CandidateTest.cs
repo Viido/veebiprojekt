@@ -7,6 +7,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using TeamEVotingWebSite.Models;
 
 namespace TeamEVotingWebSite.TestCases
 {
@@ -43,13 +44,33 @@ namespace TeamEVotingWebSite.TestCases
             SelectElement faction = new SelectElement(driver.FindElement(By.Id("Faction_Id")));
             faction.SelectByIndex(1);
 
-            driver.FindElement(By.CssSelector(".btn.btn-default")).Click();
+            driver.FindElement(By.CssSelector(".btn.btn-default")).Click(); // create a new candidate
+
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities()) // check if creation was successful
+            {
+                List<CandidateSet> candidates = teamEVotingDBEntities.CandidateSet.ToList();
+                CandidateSet cs = candidates.Last();
+            
+                StringAssert.Contains("TestFirstName", cs.Candidate_FirstName);
+                StringAssert.Contains("TestLastName", cs.Candidate_LastName);
+                Assert.AreEqual(30, cs.Candidate_Age);           
+            }
 
             IList<IWebElement> deleteButtons = driver.FindElements(By.CssSelector("[href^='/Candidates/Delete/']"));
 
             deleteButtons.Last().Click();
 
-            driver.FindElement(By.CssSelector(".btn.btn-default")).Click();
+            driver.FindElement(By.CssSelector(".btn.btn-default")).Click(); // delete the created candidate
+
+            using (TeamEVotingDBEntities teamEVotingDBEntities = new TeamEVotingDBEntities()) // check if deletion was successful
+            {
+                List<CandidateSet> candidates = teamEVotingDBEntities.CandidateSet.ToList();
+                CandidateSet cs = candidates.Last();
+
+                StringAssert.DoesNotContain("TestFirstName", cs.Candidate_FirstName);
+                StringAssert.DoesNotContain("TestLastName", cs.Candidate_LastName);
+                Assert.AreNotEqual(30, cs.Candidate_Age);
+            }
         }
 
         [TearDown]

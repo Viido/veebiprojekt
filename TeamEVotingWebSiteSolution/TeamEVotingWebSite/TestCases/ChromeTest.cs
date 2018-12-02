@@ -21,7 +21,7 @@ namespace TeamEVotingWebSite
         [Test]
         public void OpenChromeTest()
         {
-            driver.Url = "https://teamevotingwebsite.azurewebsites.net/";
+            driver.Url = "https://teamevotingwebsite.azurewebsites.net/"; // test if the website opens
         }
 
         [TearDown]
